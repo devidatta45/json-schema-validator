@@ -1,0 +1,7 @@
+target/**
+project/target/**
+project/target/config-classes/**
+
+.idea
+.bsp
+.DS_Store
