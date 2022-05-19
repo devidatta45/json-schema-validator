@@ -1,4 +1,4 @@
-# dev-connect
+# json-schema-validator
 
 ### Pre-requisite
 
@@ -12,7 +12,7 @@
    and will build the docker image using that.
 2. Run the already built image using `docker run -d -p 9000:9000 jsonschemavalidator:0.1 ` .
    This will start the application which will expose the rest api.
-3. Also, the application can be started by starting the `DevConnectApp` 
+3. Also, the application can be started by starting the `JsonSchemaValidatorApp` 
    class if opened from an IDE.
 4. The postman script in the postman folder then can be used from any
    rest client for testing the application.
