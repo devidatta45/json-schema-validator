@@ -1,0 +1,74 @@
+{
+	"info": {
+		"_postman_id": "0a0af8d1-557c-49b2-8007-5754cf1f2cc4",
+		"name": "json-schema-validator",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Save Schema",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"$schema\": \"http://json-schema.org/draft-04/schema#\",\n  \"type\": \"object\",\n  \"properties\": {\n    \"source\": {\n      \"type\": \"string\"\n    },\n    \"destination\": {\n      \"type\": \"string\"\n    },\n    \"timeout\": {\n      \"type\": \"integer\",\n      \"minimum\": 0,\n      \"maximum\": 32767\n    },\n    \"chunks\": {\n      \"type\": \"object\",\n      \"properties\": {\n        \"size\": {\n          \"type\": \"integer\"\n        },\n        \"number\": {\n          \"type\": \"integer\"\n        }\n      },\n      \"required\": [\"size\"]\n    }\n  },\n  \"required\": [\"source\", \"destination\"]\n}"
+				},
+				"url": {
+					"raw": "localhost:9000/schema/config-test-schema",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"schema",
+						"config-test-schema"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Schema",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:9000/schema/config-test-schema",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"schema",
+						"config-test-schema"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "validate schema",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"source\": \"/home/alice/image.iso\",\n  \"destination\": \"/mnt/storage\",\n  \"timeout\": null,\n  \"chunks\": {\n    \"size\": 1024,\n    \"number\": null\n  }\n}"
+				},
+				"url": {
+					"raw": "localhost:9000/validate/config-test-schema",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"validate",
+						"config-test-schema"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

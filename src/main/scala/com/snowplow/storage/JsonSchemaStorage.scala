@@ -1,6 +1,6 @@
 package com.snowplow.storage
 
-import com.snowplow.models.{DomainError, JsonSchema}
+import com.snowplow.models.DomainError
 import zio.IO
 
 trait JsonSchemaStorage {
@@ -10,8 +10,8 @@ trait JsonSchemaStorage {
 
 object JsonSchemaStorage {
   trait Service {
-    def saveSchema(schema: JsonSchema): IO[DomainError, Unit]
+    def saveSchema(schemaId: String, schema: String): IO[DomainError, Unit]
 
-    def getSchema(schemaId: String): IO[DomainError, Option[JsonSchema]]
+    def getSchema(schemaId: String): IO[DomainError, Option[String]]
   }
 }

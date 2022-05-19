@@ -13,6 +13,7 @@ val akkaHttpJson4sVersion = "1.39.2"
 val akkaStreamVersion = "2.6.18"
 val redisVersion = "3.42"
 val jsonSchemaVersion = "0.2.0"
+val circeVersion = "0.14.1"
 val scalaCheckVersion = "1.15.4"
 
 resolvers += "jitpack".at("https://jitpack.io")
@@ -28,7 +29,7 @@ libraryDependencies := Seq(
   "org.json4s" %% "json4s-ext" % json4sVersion,
   "net.debasishg" %% "redisclient" % redisVersion,
   "io.circe" %% "circe-json-schema" % jsonSchemaVersion,
-  "io.circe" %% "circe-parser" % "0.14.1",
+  "io.circe" %% "circe-parser" % circeVersion,
   "org.scalatest" %% "scalatest" % scalaTestVersion % Test,
   "org.scalacheck" %% "scalacheck" % scalaCheckVersion % Test
 )

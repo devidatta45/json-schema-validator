@@ -1,8 +1,10 @@
 package com.snowplow.utils
 
-import akka.http.scaladsl.model.{HttpResponse, StatusCodes}
+import akka.http.scaladsl.model._
 import akka.http.scaladsl.server.Directives
 import com.snowplow.models._
+
+import scala.language.implicitConversions
 
 object DomainErrorMapper extends Directives with JsonSupport {
   val domainErrorMapper: ErrorMapper[DomainError] = {
@@ -20,5 +22,4 @@ object DomainErrorMapper extends Directives with JsonSupport {
   }
 
   case class GenericErrorResponseBody(code: String, message: String, errorDetails: Option[String] = None)
-
 }

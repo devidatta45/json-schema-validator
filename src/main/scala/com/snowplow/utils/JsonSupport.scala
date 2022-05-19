@@ -1,6 +1,6 @@
 package com.snowplow.utils
 
-import akka.http.scaladsl.model._
+import akka.http.scaladsl.model.{ContentTypes, HttpEntity, HttpRequest, HttpResponse, MediaTypes, ResponseEntity}
 import akka.http.scaladsl.unmarshalling.{FromRequestUnmarshaller, FromResponseUnmarshaller, Unmarshaller}
 import akka.stream.Materializer
 import de.heikoseeberger.akkahttpjson4s.Json4sSupport
@@ -8,9 +8,9 @@ import org.json4s.jackson.Serialization
 import org.json4s.jackson.Serialization.{read, write}
 import org.json4s.{DefaultFormats, Formats, jackson}
 
-import scala.concurrent.duration._
 import scala.concurrent.{ExecutionContext, Future}
 import scala.language.implicitConversions
+import scala.concurrent.duration._
 
 // Utility for json4s serialization/deserialization
 trait JsonSupport extends Json4sSupport {

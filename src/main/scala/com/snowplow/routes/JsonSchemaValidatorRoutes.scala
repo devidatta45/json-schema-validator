@@ -7,6 +7,7 @@ import com.snowplow.models.DomainError
 import com.snowplow.services.JsonSchemaService
 import com.snowplow.storage.JsonSchemaStorage
 import com.snowplow.utils.{DomainErrorMapper, ErrorMapper, JsonSupport, ZioToRoutes}
+import org.json4s.JObject
 import zio.internal.Platform
 
 import scala.concurrent.ExecutionContext
@@ -26,7 +27,9 @@ class JsonSchemaValidatorRoutes(env: JsonSchemaStorage)(
 
   val routes = pathPrefix("schema" / Segment) { schemaId =>
     post {
-      entity(as[String]) { jsonSchema =>
+      // Even though service validate the json it's a bad practice to allow everything in the rest layer.
+      // Therefore allowing only json object
+      entity(as[JObject]) { jsonSchema =>
         for {
           serviceResponse <- service.saveSchema(schemaId, jsonSchema)
           statusCode = serviceResponse.status match {
@@ -48,7 +51,9 @@ class JsonSchemaValidatorRoutes(env: JsonSchemaStorage)(
     }
   } ~ pathPrefix("validate" / Segment) { schemaId =>
     post {
-      entity(as[String]) { rawJson =>
+      // Even though service validate the json it's a bad practice to allow everything in the rest layer.
+      // Therefore allowing only json object
+      entity(as[JObject]) { rawJson =>
         for {
           serviceResponse <- service.validateJsonWithSchemaId(schemaId, rawJson)
           statusCode = serviceResponse.status match {
